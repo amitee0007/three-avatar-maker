@@ -192,7 +192,7 @@ for (const swatch of swatches) {
 function selectSwatch(e) {
      let colory = colors[parseInt(e.target.dataset.key)];
      let color_new  = new THREE.Color(colory.color);
-    for (let object of eyeMeshes) {
+    for (let object of bodyMeshs) {
     initColor(bodymesh, object.childID, color_new);
   }
 }
