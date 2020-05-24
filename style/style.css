@@ -1,0 +1,52 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    margin: 0%;
+    padding: 0%;
+}
+body{
+    margin: 0%;
+    padding: 0%;
+}
+
+canvas{
+    display: block;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.controller{
+    z-index: 100;
+    position: fixed;
+    top: 15vh;
+    left: 20px;
+    width: 60px;
+}
+.color-tray{
+    z-index: 100;
+    position: fixed;
+    top: 70vh;
+    left: 20px;
+    display: flex;
+}
+.tray-component{
+    width: 40px;
+    height: 40px;
+}
+.controller img{
+    height: 50px;
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(60, 146, 231);
+}
+.controller img:hover{
+    border: 1px solid black;
+    background-color: gainsboro;
+}
+
+.controlactive{
+    border: 1px solid black !important;
+    background-color: gainsboro !important;
+}
