@@ -8,7 +8,8 @@ let scene,
   renderer,
   camera,
   model,                    // Our character
-  bodymesh;
+  bodymesh,
+  selectedoption;
 
 const colors = [
     {color:'rgb(141,85,36)'  },
@@ -21,7 +22,7 @@ const colors = [
 let colortray = document.querySelector('#colortray');
 
 // model body 
-const bodyMeshs = [
+const bodyMeshes = [
   {childID: "CC_Base_Body.001_0"},
   {childID: "CC_Base_Body.001_1"},
   {childID: "CC_Base_Body.001_2"},
@@ -94,7 +95,7 @@ function onload(gltf){
     if(gltf.scene.name == 'Scene'){
         bodymesh = gltf.scene;
         bodymesh.traverse( function ( child ) {
-            console.log(child);
+            // console.log(child);
             if ( child.isMesh ) {
                 roughnessMipmapper.generateMipmaps( child.material );
             }    
@@ -182,6 +183,17 @@ function buildColors(colors) {
 }
 buildColors(colors);
 
+let selectList = document.querySelectorAll('#colorcontrol');
+ for(let selected of selectList){
+   selected.addEventListener('click',(e)=>{
+     let option = e.target;
+     selectedoption = e.target.dataset.selected;
+     for(let item of selectList){
+       item.classList.remove('controlactive');
+       option.classList.add('controlactive');
+     }
+   })
+ }
 
 const swatches = document.querySelectorAll(".tray-component");
 
@@ -189,12 +201,22 @@ for (const swatch of swatches) {
   swatch.addEventListener('click', selectSwatch);
 }
 
+
+
 function selectSwatch(e) {
      let colory = colors[parseInt(e.target.dataset.key)];
      let color_new  = new THREE.Color(colory.color);
-    for (let object of bodyMeshs) {
-    initColor(bodymesh, object.childID, color_new);
-  }
+     if(selectedoption == 'bodyMeshes'){
+      for (let object of bodyMeshes) {
+        initColor(bodymesh, object.childID, color_new);
+      }
+     }
+     else if(selectedoption == 'eyeMeshes'){
+      for (let object of eyeMeshes) {
+        initColor(bodymesh, object.childID, color_new);
+      }
+     }
+
 }
 
 // Function - Add the textures to the bodymesh
@@ -216,7 +238,7 @@ window.addEventListener( 'resize', onWindowResize, false );
 
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
-// /    camera.updateProjectionMatrix();
+    camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
-    render();
+    // render();
 }
