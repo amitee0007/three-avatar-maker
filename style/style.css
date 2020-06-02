@@ -20,9 +20,9 @@ canvas{
 .controller{
     z-index: 100;
     position: fixed;
-    top: 15vh;
+    top: 20vh;
     left: 20px;
-    width: 60px;
+    width: 150px;
 }
 .color-tray{
     z-index: 100;
@@ -31,14 +31,26 @@ canvas{
     left: 20px;
     display: flex;
 }
+.character{
+    z-index: 100;
+    position: fixed;
+    top: 14vh;
+    left: 20px;
+    width: 100px;
+    /* background-color: azure; */
+}
+.character_selector{
+    background-color:rgb(60, 146, 231) !important;
+    color: white !important;
+}
 .tray-component{
     width: 40px;
     height: 40px;
 }
 .controller img{
     height: 50px;
-    width: 100%;
-    padding: 10px;
+    width: 55px;
+    padding: 3px;
     background-color: rgb(60, 146, 231);
 }
 .controller img:hover{
@@ -50,3 +62,20 @@ canvas{
     border: 1px solid black !important;
     background-color: gainsboro !important;
 }
+
+.topstray,.bottomstray,.bootstray{
+    width: 100px;
+    display: flex;
+    /* background-color: whitesmoke !important; */
+}
+.arrow{
+    opacity: 0.3;
+    width: 55px;
+    height: 50px;
+    cursor: pointer;
+    text-align: right;
+}
+.arrow:hover{
+    opacity: 0.7;
+}
+
